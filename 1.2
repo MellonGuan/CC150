@@ -1,0 +1,39 @@
+/* method one: sort*/
+
+String sort(String s) {
+
+	char[] content = s.toCharArray();
+	java.util.Arrays.sort(content);
+	return new String(content);
+}
+
+boolean permutation(String s, String t) {
+	if (s.length() != t.length()) {
+		return false;
+	}
+	return sort(s).equals(sort(t));
+}
+
+// method 2
+
+boolean permutation(String s, String t) {
+	if (s.length() != t.length()) {
+		return false;
+	}
+
+	int[] charArr = new int[128];
+	char[] sArr = s.toCharArray();
+	for (char c : sArr) {
+		charArr[c]++;
+	}
+
+	for(int i = 0; i < t.length(); i++) {
+		int c = (int) t.charAr(i);
+		charArr[c]--;
+		if (charArr[c] < 0) {
+			return false;
+		}
+	}
+	return true;
+
+}
