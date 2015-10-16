@@ -1,0 +1,18 @@
+// method one
+
+boolean isPermutationofPalindrome(String str) {
+	int[] table = getFrequencyTable(str);
+	return checkOdd(table);
+}
+
+int[] getFrequencyTable(String str) {
+	int[] table = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
+	for (char c : str.toCharArray()) {
+		int x = getCharNumber(c);
+		if (x != -1) {
+			table[x]++;
+		}
+	}
+	return table;
+}
+
